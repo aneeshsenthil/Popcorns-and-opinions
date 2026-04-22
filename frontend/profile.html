@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile | Popcorn & Opinions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-content">
+      <div class="logo">
+        <img src="images/logo/po-logo.png" alt="Popcorn & Opinions Logo">
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="discover.html">Discover</a>
+        <a href="upcoming.html">Upcoming</a>
+        <a href="watchlist.html">Watchlist</a>
+        <a href="review.html">Rate & Review</a>
+        <a href="profile.html">Profile</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Profile Page -->
+  <main class="profile-page">
+    <div class="container">
+
+      <!-- Loading State -->
+      <div id="profile-loading" class="profile-loading">
+        <div class="spinner"></div>
+        <p>Loading your profile...</p>
+      </div>
+
+      <!-- Profile Content (hidden until loaded) -->
+      <div id="profile-content" class="profile-content hidden">
+
+        <!-- Top Hero Row: Avatar + Info + Actions -->
+        <div class="profile-hero-row">
+
+          <!-- Avatar Card -->
+          <div class="profile-avatar-card">
+            <div class="avatar-wrapper">
+              <img id="avatar-img" src="images/default-avatar.png" alt="Profile Avatar" class="avatar-img">
+              <label class="avatar-upload-btn" title="Change photo">
+                📷
+                <input type="file" id="avatar-upload" accept="image/*" style="display:none;">
+              </label>
+            </div>
+            <h2 id="display-username" class="avatar-username">Guest</h2>
+            <p id="display-email" class="avatar-email">—</p>
+          </div>
+
+          <!-- Info Card -->
+          <div class="profile-info-card">
+            <h3 class="card-title">👤 Account Details</h3>
+            <div class="info-row">
+              <span class="info-label">Username</span>
+              <span id="info-username" class="info-value">—</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Email</span>
+              <span id="info-email" class="info-value">—</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Date of Birth</span>
+              <span id="info-dob" class="info-value">—</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Member Since</span>
+              <span id="info-joined" class="info-value">—</span>
+            </div>
+          </div>
+
+          <!-- Actions Card -->
+          <div class="profile-actions-card">
+            <h3 class="card-title">⚙️ Settings</h3>
+
+            <!-- Theme Toggle -->
+            <div class="action-row">
+              <span class="action-label">🌙 Dark Mode</span>
+              <label class="toggle-switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+
+            <hr class="action-divider">
+
+            <!-- Logout -->
+            <button id="logout-btn" class="logout-btn">
+              <span>🚪</span> Sign Out
+            </button>
+          </div>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="stats-row">
+          <div class="stat-box">
+            <div class="stat-icon">🎬</div>
+            <div class="stat-value" id="review-count">0</div>
+            <div class="stat-label">Reviews Given</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-icon">📋</div>
+            <div class="stat-value" id="watchlist-count">0</div>
+            <div class="stat-label">Watchlist Movies</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-icon">⭐</div>
+            <div class="stat-value" id="avg-rating">—</div>
+            <div class="stat-label">Avg. Rating</div>
+          </div>
+        </div>
+
+        <!-- Recent Reviews -->
+        <div class="recent-reviews-section">
+          <h3 class="section-title">🍿 Recent Reviews</h3>
+          <div id="recent-reviews-list" class="recent-reviews-list">
+            <p class="no-data-msg">No reviews yet. <a href="review.html">Write one!</a></p>
+          </div>
+        </div>
+
+      </div><!-- /profile-content -->
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 Popcorn & Opinions</p>
+  </footer>
+
+  <!-- Supabase CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
+<script src="js/profile.js"></script>
+</body>
+</html>

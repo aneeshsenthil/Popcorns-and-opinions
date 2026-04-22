@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rate & Review | Popcorn & Opinions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/review.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase.js"></script>
+<script src="js/login.js"></script>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container nav-content">
+      <div class="logo">
+        <img src="images/logo/po-logo.png" alt="Popcorn & Opinions Logo">
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="discover.html">Discover</a>
+        <a href="upcoming.html">Upcoming</a>
+        <a href="watchlist.html">Watchlist</a>
+        <a href="review.html" class="active">Rate & Review</a>
+        <a href="profile.html">Profile</a>
+      </nav>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="discover.html">Discover</a>
+    <a href="upcoming.html">Upcoming</a>
+    <a href="watchlist.html">Watchlist</a>
+    <a href="review.html">Rate & Review</a>
+    <a href="profile.html">Profile</a>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-header-title">⭐ Rate & Review</h1>
+      <p class="page-header-sub">Share your opinion about movies you've watched.</p>
+    </div>
+  </section>
+
+  <!-- MAIN LAYOUT -->
+  <section class="review-page">
+    <div class="container review-layout">
+
+      <!-- LEFT: FORM -->
+      <div class="review-form-card">
+        <h2 class="form-card-title">✍️ Write a Review</h2>
+
+        <!-- Movie Search -->
+        <div class="form-group">
+          <label>Search Movie</label>
+          <div class="search-input-wrap">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="movie-search" placeholder="Type a movie name...">
+          </div>
+          <!-- Dropdown results -->
+          <div id="search-results" class="search-results-dropdown hidden"></div>
+        </div>
+
+        <!-- Selected Movie Preview -->
+        <div id="selected-movie" class="selected-movie-preview hidden">
+          <img id="selected-poster" src="" alt="">
+          <div class="selected-info">
+            <div id="selected-title" class="selected-title"></div>
+            <div id="selected-year"  class="selected-year"></div>
+          </div>
+          <button id="clear-selection" class="clear-btn" title="Clear">✕</button>
+        </div>
+
+        <!-- Star Rating -->
+        <div class="form-group">
+          <label>Your Rating</label>
+          <div class="star-rating" id="star-rating">
+            <button class="star" data-val="1">★</button>
+            <button class="star" data-val="2">★</button>
+            <button class="star" data-val="3">★</button>
+            <button class="star" data-val="4">★</button>
+            <button class="star" data-val="5">★</button>
+            <button class="star" data-val="6">★</button>
+            <button class="star" data-val="7">★</button>
+            <button class="star" data-val="8">★</button>
+            <button class="star" data-val="9">★</button>
+            <button class="star" data-val="10">★</button>
+          </div>
+          <span class="star-label" id="star-label">Click to rate</span>
+        </div>
+
+        <!-- Review Text -->
+        <div class="form-group">
+          <label>Your Review</label>
+          <textarea id="movie-review" placeholder="What did you think? (optional)" rows="4"></textarea>
+          <span class="char-count" id="char-count">0 / 500</span>
+        </div>
+
+        <!-- Error msg -->
+        <p class="form-error hidden" id="form-error"></p>
+
+        <!-- Submit -->
+        <button id="submit-review" class="primary-btn submit-btn">Submit Review</button>
+      </div>
+
+      <!-- RIGHT: REVIEWS LIST -->
+      <div class="reviews-list-panel">
+        <div class="reviews-list-header">
+          <h2 class="form-card-title">🍿 Your Reviews</h2>
+          <div class="reviews-controls">
+            <select id="reviews-sort">
+              <option value="newest">Newest First</option>
+              <option value="oldest">Oldest First</option>
+              <option value="highest">Highest Rated</option>
+              <option value="lowest">Lowest Rated</option>
+            </select>
+            <button id="clear-reviews-btn" class="outline-btn-sm danger">🗑 Clear All</button>
+          </div>
+        </div>
+
+        <div class="reviews-count" id="reviews-count">0 reviews</div>
+
+        <!-- Empty state -->
+        <div id="reviews-empty" class="reviews-empty">
+          <div class="empty-icon">🎬</div>
+          <p>No reviews yet. Be the first to write one!</p>
+        </div>
+
+        <!-- Reviews -->
+        <div id="reviews-container"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-logo"><img src="images/logo/po-logo.png" alt="Popcorn & Opinions"></div>
+      <p class="footer-copy">© 2026 Popcorn & Opinions. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="discover.html">Discover</a>
+        <a href="profile.html">Profile</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Confirm clear all -->
+  <div class="confirm-overlay hidden" id="confirm-overlay">
+    <div class="confirm-box">
+      <p>🗑 Delete all your reviews?</p>
+      <div class="confirm-actions">
+        <button class="primary-btn danger-btn" id="confirm-yes">Yes, delete all</button>
+        <button class="outline-btn" id="confirm-no">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/review.js"></script>
+</body>
+</html>

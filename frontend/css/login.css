@@ -1,0 +1,429 @@
+/* ============================
+   BACKGROUND
+============================ */
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+.bg-posters {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 4px;
+  opacity: 0.18;
+  transform: scale(1.05);
+  filter: blur(1px);
+}
+
+.bg-poster-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bg-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 60% 50%, rgba(225,29,72,0.12) 0%, transparent 60%),
+    linear-gradient(135deg, rgba(15,23,42,0.92) 0%, rgba(15,23,42,0.75) 50%, rgba(15,23,42,0.95) 100%);
+}
+
+.bg-scanline {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0,0,0,0.04) 3px,
+    rgba(0,0,0,0.04) 4px
+  );
+  pointer-events: none;
+}
+
+/* ============================
+   PAGE LAYOUT
+============================ */
+.page-layout {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* ============================
+   BRAND SIDE (left)
+============================ */
+.brand-side {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px;
+  flex: 1;
+  max-width: 520px;
+}
+
+.brand-logo {
+  height: 220px;
+  width: 350px;
+  margin-bottom: 1px;
+  filter: drop-shadow(0 4px 20px rgba(225,29,72,0.4));
+}
+
+.brand-tagline {
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.brand-tagline span { color: #E11D48; }
+
+.brand-sub {
+  font-size: 15px;
+  color: #94a3b8;
+  line-height: 1.7;
+  max-width: 380px;
+}
+
+.brand-bullets {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.brand-bullet {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: #cbd5e1;
+}
+
+.bullet-icon {
+  width: 32px;
+  height: 32px;
+  background: rgba(225,29,72,0.15);
+  border: 1px solid rgba(225,29,72,0.3);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+/* ============================
+   FORM SIDE (right)
+============================ */
+.form-side {
+  width: 100%;
+  max-width: 450px;
+}
+
+/* ============================
+   AUTH CARD
+============================ */
+.auth-card {
+  background: rgba(30, 41, 59, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 36px 32px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+  animation: cardIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(24px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.card-logo {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.card-logo img {
+  height: 54px;
+  filter: drop-shadow(0 2px 12px rgba(225,29,72,0.35));
+}
+
+/* ============================
+   TABS
+============================ */
+.auth-tabs {
+  display: flex;
+  background: rgba(15,23,42,0.6);
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 28px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: transparent;
+  color: #94a3b8;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.tab-btn.active {
+  background: #E11D48;
+  color: white;
+  box-shadow: 0 4px 14px rgba(225,29,72,0.4);
+}
+
+/* ============================
+   PANELS
+============================ */
+.auth-panel { display: none; }
+.auth-panel.active { display: block; }
+
+/* ============================
+   STEP INDICATOR
+============================ */
+.step-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+
+.step-dot {
+  height: 4px;
+  flex: 1;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.1);
+  transition: background 0.3s ease;
+}
+
+.step-dot.done   { background: #E11D48; }
+.step-dot.active { background: #fb7185; }
+
+.step-label {
+  font-size: 12px;
+  color: #94a3b8;
+  text-align: right;
+  min-width: 60px;
+}
+
+/* ============================
+   FORM ELEMENTS
+============================ */
+.form-group { margin-bottom: 16px; }
+
+.form-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: #94a3b8;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.form-group input,
+.form-group select {
+  width: 95%;
+  padding: 12px 14px;
+  background: rgba(15,23,42,0.7);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  color: #F8FAFC;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group select option { background: #1e293b; }
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #E11D48;
+  box-shadow: 0 0 0 3px rgba(225,29,72,0.12);
+}
+
+.form-group input::placeholder { color: #475569; }
+
+/* Password toggle - FIXED POSITIONING */
+.pw-wrapper { 
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.pw-wrapper input {
+  width: 100%;
+  padding-right: 40px;
+}
+
+.pw-eye {
+  position: absolute;
+  right: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #64748b;
+  user-select: none;
+  transition: color 0.2s;
+  flex-shrink: 0;
+}
+
+.pw-eye:hover { color: #E11D48; }
+
+/* ============================
+   BUTTONS
+============================ */
+.btn-primary {
+  width: 100%;
+  padding: 13px;
+  background: #E11D48;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  margin-top: 6px;
+  box-shadow: 0 4px 18px rgba(225,29,72,0.35);
+}
+
+.btn-primary:hover {
+  background: #be123c;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(225,29,72,0.45);
+}
+
+.btn-primary:active { transform: translateY(0); }
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-secondary {
+  width: 100%;
+  padding: 12px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+  color: #cbd5e1;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+  margin-top: 10px;
+}
+
+.btn-secondary:hover {
+  border-color: rgba(255,255,255,0.25);
+  color: white;
+}
+
+.btn-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.btn-back {
+  flex: 0 0 auto;
+  padding: 12px 18px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+  color: #94a3b8;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-back:hover {
+  border-color: rgba(255,255,255,0.25);
+  color: white;
+}
+
+.btn-row .btn-primary { flex: 1; margin-top: 0; }
+
+/* ============================
+   MESSAGES
+============================ */
+.form-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 18px 0;
+  color: #475569;
+  font-size: 12px;
+}
+
+.form-divider::before,
+.form-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.07);
+}
+
+.error-msg {
+  font-size: 12px;
+  color: #fb7185;
+  margin-top: 6px;
+  display: none;
+}
+
+.success-msg {
+  font-size: 12px;
+  color: #34d399;
+  margin-top: 6px;
+  display: none;
+}
+
+.step-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.step-sub {
+  font-size: 13px;
+  color: #94a3b8;
+  margin-bottom: 20px;
+}
+
+/* ============================
+   RESPONSIVE
+============================ */
+@media (min-width: 900px) {
+  .page-layout {
+    justify-content: space-between;
+    padding: 40px 60px;
+  }
+  .brand-side { display: flex; }
+  .card-logo  { display: none; }
+}
+
+@media (max-width: 480px) {
+  .auth-card { padding: 28px 20px; }
+}

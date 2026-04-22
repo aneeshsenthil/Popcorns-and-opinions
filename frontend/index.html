@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | Popcorn & Opinions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="navbar">
+    <div class="container nav-content">
+      <div class="logo">
+        <img src="images/logo/po-logo.png" alt="Popcorn & Opinions Logo">
+      </div>
+      <nav class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="discover.html">Discover</a>
+        <a href="upcoming.html">Upcoming</a>
+        <a href="watchlist.html">Watchlist</a>
+        <a href="review.html">Rate & Review</a>
+        <a href="profile.html">Profile</a>
+      </nav>
+      <!-- Hamburger for mobile -->
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile nav drawer -->
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="discover.html">Discover</a>
+    <a href="upcoming.html">Upcoming</a>
+    <a href="watchlist.html">Watchlist</a>
+    <a href="review.html">Rate & Review</a>
+    <a href="profile.html">Profile</a>
+  </div>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="hero-section">
+    <div class="hero-overlay">
+      <div class="container hero-content">
+        <span class="hero-badge" id="hero-badge">🔥 Trending Now</span>
+        <h1 id="hero-title">Loading...</h1>
+        <p id="hero-description"></p>
+        <div class="hero-meta" id="hero-meta"></div>
+        <div class="hero-actions">
+          <a href="discover.html"><button class="primary-btn">🎬 Explore Now</button></a>
+          <button class="outline-btn" id="hero-watchlist-btn">+ Watchlist</button>
+        </div>
+      </div>
+    </div>
+    <!-- Hero dots navigation -->
+    <div class="hero-dots" id="hero-dots"></div>
+  </section>
+
+  <!-- ===================== TRENDING ===================== -->
+  <section class="home-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">🔥 Trending This Week</h2>
+        <a href="discover.html" class="see-all-link">See All →</a>
+      </div>
+      <div id="trending-container" class="movie-grid"></div>
+    </div>
+  </section>
+
+  <!-- ===================== TOP RATED ===================== -->
+  <section class="home-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">⭐ Top Rated</h2>
+        <a href="discover.html" class="see-all-link">See All →</a>
+      </div>
+      <div id="top-rated-container" class="movie-grid"></div>
+    </div>
+  </section>
+
+  <!-- ===================== UPCOMING ===================== -->
+  <section class="home-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">🎬 Coming Soon</h2>
+        <a href="upcoming.html" class="see-all-link">See All →</a>
+      </div>
+      <div id="upcoming-container" class="movie-grid"></div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-logo">
+        <img src="images/logo/po-logo.png" alt="Popcorn & Opinions">
+      </div>
+      <p class="footer-copy">© 2026 Popcorn & Opinions. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="discover.html">Discover</a>
+        <a href="upcoming.html">Upcoming</a>
+        <a href="profile.html">Profile</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Movie Detail Modal -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" id="movie-modal">
+      <button class="modal-close" id="modal-close">✕</button>
+      <div class="modal-backdrop" id="modal-backdrop"></div>
+      <div class="modal-body">
+        <img class="modal-poster" id="modal-poster" src="" alt="">
+        <div class="modal-info">
+          <h2 id="modal-title"></h2>
+          <div class="modal-meta" id="modal-meta"></div>
+          <p class="modal-overview" id="modal-overview"></p>
+          <div class="modal-actions">
+            <button class="primary-btn" id="modal-watchlist-btn">+ Add to Watchlist</button>
+            <a href="review.html"><button class="outline-btn">✍️ Write Review</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

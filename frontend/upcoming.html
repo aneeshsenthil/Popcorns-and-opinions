@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upcoming | Popcorn & Opinions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/upcoming.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container nav-content">
+      <div class="logo">
+        <img src="images/logo/po-logo.png" alt="Popcorn & Opinions Logo">
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="discover.html">Discover</a>
+        <a href="upcoming.html" class="active">Upcoming</a>
+        <a href="watchlist.html">Watchlist</a>
+        <a href="review.html">Rate & Review</a>
+        <a href="profile.html">Profile</a>
+      </nav>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="index.html">Home</a>
+    <a href="discover.html">Discover</a>
+    <a href="upcoming.html">Upcoming</a>
+    <a href="watchlist.html">Watchlist</a>
+    <a href="review.html">Rate & Review</a>
+    <a href="profile.html">Profile</a>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-header-title">🎬 Upcoming Releases</h1>
+      <p class="page-header-sub">Stay ahead — discover movies hitting cinemas soon.</p>
+    </div>
+  </section>
+
+  <!-- FILTER BAR -->
+  <section class="upcoming-controls">
+    <div class="container upcoming-controls-inner">
+
+      <div class="filter-tabs" id="filter-tabs">
+        <button class="filter-tab active" data-filter="all">All Upcoming</button>
+        <button class="filter-tab" data-filter="month">This Month</button>
+        <button class="filter-tab" data-filter="3months">Next 3 Months</button>
+      </div>
+
+      <div class="upcoming-sort">
+        <select id="upcoming-sort">
+          <option value="release_date.asc">Release Date ↑</option>
+          <option value="popularity.desc">Most Popular</option>
+          <option value="vote_average.desc">Top Rated</option>
+        </select>
+      </div>
+
+    </div>
+    <div class="container">
+      <div class="results-info" id="results-info"></div>
+    </div>
+  </section>
+
+  <!-- COUNTDOWN SPOTLIGHT -->
+  <section class="spotlight-section" id="spotlight-section">
+    <div class="container">
+      <h2 class="section-title" style="margin-bottom:20px;">🔥 Most Anticipated</h2>
+      <div class="spotlight-grid" id="spotlight-grid"></div>
+    </div>
+  </section>
+
+  <!-- MOVIE GRID -->
+  <section class="discover-results">
+    <div class="container">
+      <div id="empty-state" class="empty-state hidden">
+        <div class="empty-icon">📭</div>
+        <p>No upcoming movies found for this filter.</p>
+      </div>
+      <div id="upcoming-container" class="movie-grid"></div>
+      <div class="load-more-container" id="load-more-wrap">
+        <button id="load-more-btn" class="secondary-btn">Load More</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-logo"><img src="images/logo/po-logo.png" alt="Popcorn & Opinions"></div>
+      <p class="footer-copy">© 2026 Popcorn & Opinions. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="discover.html">Discover</a>
+        <a href="profile.html">Profile</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" id="movie-modal">
+      <button class="modal-close" id="modal-close">✕</button>
+      <div class="modal-backdrop" id="modal-backdrop"></div>
+      <div class="modal-body">
+        <img class="modal-poster" id="modal-poster" src="" alt="">
+        <div class="modal-info">
+          <h2 id="modal-title"></h2>
+          <div class="modal-meta" id="modal-meta"></div>
+          <p class="modal-overview" id="modal-overview"></p>
+          <div class="modal-actions">
+            <button class="primary-btn" id="modal-watchlist-btn">+ Add to Watchlist</button>
+            <a href="review.html"><button class="outline-btn">✍️ Write Review</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/upcoming.js"></script>
+</body>
+</html>

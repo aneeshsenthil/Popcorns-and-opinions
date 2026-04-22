@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Popcorn & Opinions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+  <!-- BACKGROUND -->
+  <div class="bg-layer">
+    <div class="bg-posters" id="bg-posters"></div>
+    <div class="bg-overlay"></div>
+    <div class="bg-scanline"></div>
+  </div>
+
+  <!-- PAGE LAYOUT -->
+  <div class="page-layout">
+
+    <!-- LEFT: Brand -->
+    <div class="brand-side">
+      <img src="images/logo/po-logo.png" alt="Popcorn & Opinions" class="brand-logo">
+      <h1 class="brand-tagline">Your opinions,<br>the <span>real</span> review.</h1>
+      <p class="brand-sub">Track what you've watched, rate what you loved, and discover what's next — all in one place.</p>
+      <div class="brand-bullets">
+        <div class="brand-bullet">
+          <div class="bullet-icon">🎬</div>
+          <span>Rate & review any movie</span>
+        </div>
+        <div class="brand-bullet">
+          <div class="bullet-icon">📋</div>
+          <span>Build your personal watchlist</span>
+        </div>
+        <div class="brand-bullet">
+          <div class="bullet-icon">🔥</div>
+          <span>Discover trending & upcoming films</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Auth Card -->
+    <div class="form-side">
+      <div class="auth-card">
+
+        <!-- Mobile logo -->
+        <div class="card-logo">
+          <img src="images/logo/po-logo.png" alt="Popcorn & Opinions">
+        </div>
+
+        <!-- Tabs -->
+        <div class="auth-tabs">
+          <button class="tab-btn active" id="tab-login" onclick="switchTab('login')">Sign In</button>
+          <button class="tab-btn" id="tab-signup" onclick="switchTab('signup')">Sign Up</button>
+        </div>
+
+        <!-- ========== LOGIN PANEL ========== -->
+        <div class="auth-panel active" id="panel-login">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="login-email" placeholder="Enter your email">
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <div class="pw-wrapper">
+              <input type="password" id="login-password" placeholder="Enter your password">
+              <span class="pw-eye" onclick="togglePw('login-password', this)">👁️</span>
+            </div>
+          </div>
+          <p class="error-msg" id="login-error"></p>
+          <button id="submit-login-btn" class="btn-primary" onclick="handleLogin()">Sign In</button>
+          <div class="form-divider">or</div>
+          <button class="btn-secondary" onclick="switchTab('signup')">Create an account</button>
+        </div>
+
+        <!-- ========== SIGNUP PANEL ========== -->
+        <div class="auth-panel" id="panel-signup">
+
+          <!-- 2 step dots -->
+          <div class="step-indicator">
+            <div class="step-dot active" id="dot-1"></div>
+            <div class="step-dot" id="dot-2"></div>
+            <span class="step-label" id="step-label">Step 1 / 2</span>
+          </div>
+
+          <!-- STEP 1: Basic Info -->
+          <div id="signup-step-1" class="signup-step">
+            <p class="step-title">Create your account</p>
+            <p class="step-sub">Start with the basics</p>
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" id="su-name" placeholder="John Doe">
+            </div>
+            <div class="form-group">
+              <label>Username</label>
+              <input type="text" id="su-username" placeholder="Choose a username">
+            </div>
+            <div class="form-group">
+              <label>Date of Birth</label>
+              <input type="date" id="su-dob">
+            </div>
+            <p class="error-msg" id="step1-error"></p>
+            <button class="btn-primary" onclick="goStep(2)">Continue →</button>
+          </div>
+
+          <!-- STEP 2: Account Details -->
+          <div id="signup-step-2" class="signup-step" style="display:none;">
+            <p class="step-title">Account details</p>
+            <p class="step-sub">Set up your login credentials</p>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" id="su-email" placeholder="you@example.com">
+            </div>
+            <div class="form-group">
+              <label>Preferred Language</label>
+              <select id="su-language">
+                <option value="">Select language</option>
+                <option value="en">English</option>
+                <option value="hi">Hindi</option>
+                <option value="te">Telugu</option>
+                <option value="ta">Tamil</option>
+                <option value="kn">Kannada</option>
+                <option value="ml">Malayalam</option>
+                <option value="bn">Bengali</option>
+                <option value="mr">Marathi</option>
+                <option value="es">Spanish</option>
+                <option value="fr">French</option>
+                <option value="de">German</option>
+                <option value="ja">Japanese</option>
+                <option value="ko">Korean</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <div class="pw-wrapper">
+                <input type="password" id="su-password" placeholder="Min. 8 characters">
+                <span class="pw-eye" onclick="togglePw('su-password', this)">👁️</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Confirm Password</label>
+              <div class="pw-wrapper">
+                <input type="password" id="su-confirm" placeholder="Repeat password">
+                <span class="pw-eye" onclick="togglePw('su-confirm', this)">👁️</span>
+              </div>
+            </div>
+            <p class="error-msg" id="step2-error"></p>
+            <p class="success-msg" id="step2-success"></p>
+            <div class="btn-row">
+              <button class="btn-back" onclick="goStep(1)">← Back</button>
+              <button id="submit-signup-btn" class="btn-primary" onclick="handleSignup()">Create Account</button>
+            </div>
+          </div>
+
+        </div><!-- /panel-signup -->
+      </div><!-- /auth-card -->
+    </div><!-- /form-side -->
+  </div><!-- /page-layout -->
+
+  <!-- Scripts: order matters -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>
